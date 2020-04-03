@@ -6,21 +6,24 @@ $(document).ready(function() {
     // stampare il mese di Gennaio 2018
     // tramite il click stampare il mese successivo
     var dataIniziale = moment('2018-01-01');
+    var meseApi = parseInt(dataIniziale.month());
     stampaGiorniMese(dataIniziale);     // inizializzazione del calendario
     stampaFestivi();
 
     $('.mese-succ').click(function () {
         dataIniziale.add(1, 'month');
-        var meseApi = dataIniziale.month();
+        var meseApi = parseInt(dataIniziale.month());
         console.log(meseApi);
-    stampaGiorniMese(dataIniziale);
+        stampaGiorniMese(dataIniziale);
+        stampaFestivi(meseApi);
     });
 
     $('.mese-prec').click(function () {
         dataIniziale.subtract(1, 'month');
-        var meseApi = dataIniziale.month();
+        var meseApi = parseInt(dataIniziale.month());
         console.log(meseApi);
-    stampaGiorniMese(dataIniziale);
+        stampaGiorniMese(dataIniziale);
+        stampaFestivi(meseApi);
     });
 
     function stampaFestivi(meseApi) {
@@ -28,14 +31,13 @@ $(document).ready(function() {
             url: 'https://flynn.boolean.careers/exercises/api/holidays?year=2018',
             method: 'GET',
             data: {
-                month: 0
+                month: meseApi
             },
             success: function (data) {
                 var giorniFestivi = data.response;
                 for (var i = 0; i < giorniFestivi.length; i++) {
                     var giornoFestivo = giorniFestivi[i];
                     var nomeFestivo = giornoFestivo.name;
-                    console.log(nomeFestivo);
                     var dataFestivo = giornoFestivo.date;
                     console.log(dataFestivo);
                     $('#calendar li[data-day="' + dataFestivo + '"]').addClass('festivo').append(' - ' + nomeFestivo);
