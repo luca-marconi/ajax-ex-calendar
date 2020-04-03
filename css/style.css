@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+	font-family: ‘Lato’, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+.top-calendar,
+.main-calendar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+#nome-mese {
+	text-transform: capitalize;
+}
+.festivo {
+	color: red;
+}
