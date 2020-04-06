@@ -4,16 +4,70 @@
 	margin: 0;
 	padding: 0;
 }
+body {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
 .top-calendar,
 .main-calendar {
 	display: flex;
 	justify-content: center;
+	width: 700px;
+	height: auto;
 	align-items: center;
 	flex-direction: column;
+}
+.day-calendar {
+	width: 700px;
+	height: 50px;
+	padding-top: 25px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.day-calendar li {
+	width: 100px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	border: 1px solid black;
+	background-color: lightblue;
+}
+.top-navigation {
+	margin-top: 25px;
+}
+#calendar {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	flex-wrap: wrap;
+}
+li {
+	border: 1px solid black;
+	width: 100px;
+	height: 75px;
+	list-style-type: none;
+	text-align: center;
 }
 #nome-mese {
 	text-transform: capitalize;
 }
 .festivo {
 	color: red;
+}
+.btn {
+	padding: 5px 20px;
+	border-radius: 5px;
+	background-color: purple;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+.btn:disabled {
+	background-color: lightgrey;
+	cursor: not-allowed;
 }
